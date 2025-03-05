@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj1m5bbvn35pi"]
+[gd_scene load_steps=7 format=3 uid="uid://dj1m5bbvn35pi"]
 
 [ext_resource type="PackedScene" uid="uid://oi44gbn2tjr5" path="res://scenes/room.tscn" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dcxsq4hvthnmt" path="res://player/player.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://cfr6v2p3pcf3b" path="res://world/generation.tscn" id="3_k0juu"]
 [ext_resource type="Script" uid="uid://86syowx0v6lf" path="res://scripts/generation.gd" id="4_71j4m"]
+[ext_resource type="PackedScene" uid="uid://buy3j5k5hkt51" path="res://enemy/enemy.tscn" id="5_71j4m"]
+[ext_resource type="Script" uid="uid://ciscvsiltq8j2" path="res://scripts/enemies.gd" id="5_qfnet"]
 
 [node name="World" type="Node2D"]
 
@@ -15,3 +17,9 @@ position = Vector2(60, 60)
 
 [node name="Generation" parent="." instance=ExtResource("3_k0juu")]
 script = ExtResource("4_71j4m")
+
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource("5_qfnet")
+
+[node name="Enemy" parent="." instance=ExtResource("5_71j4m")]
+position = Vector2(220, 220)

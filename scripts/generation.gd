@@ -16,7 +16,7 @@ func _ready():
 		map.append([])
 		for y in range(map_height):
 			map[x].append(false)
-	generate()
+	#generate()
 
 func generate() -> void:
 	check_room(3,3,0,Vector2.ZERO,true)

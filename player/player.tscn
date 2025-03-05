@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oul6g"]
 size = Vector2(8, 8)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 scale = Vector2(5, 5)
 script = ExtResource("1_rkbax")
@@ -15,7 +15,7 @@ script = ExtResource("1_rkbax")
 texture = ExtResource("1_oul6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.90735e-07, 1.90735e-07)
+position = Vector2(4.29153e-07, 1.90735e-07)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oul6g")
 

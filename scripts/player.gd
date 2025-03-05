@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal player_moved
+
 func _physics_process(_delta: float) -> void:
 	player_input()
 
@@ -28,3 +30,4 @@ func move(dir: Vector2) -> void:
 		if result.collider.is_in_group("walls"):
 			return
 	position += 40 * dir
+	player_moved.emit()

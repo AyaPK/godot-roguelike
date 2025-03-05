@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://oi44gbn2tjr5"]
+[gd_scene load_steps=8 format=4 uid="uid://oi44gbn2tjr5"]
 
 [ext_resource type="Texture2D" uid="uid://ckv0lcmorb02i" path="res://assets/art/caves.png" id="1_36trf"]
 [ext_resource type="Script" uid="uid://bjay6l385uy00" path="res://scripts/room.gd" id="1_ffxv4"]
 [ext_resource type="PackedScene" uid="uid://buy3j5k5hkt51" path="res://enemy/enemy.tscn" id="2_14vil"]
+[ext_resource type="PackedScene" uid="uid://dw3a1awvqpl4u" path="res://scenes/coin.tscn" id="3_jn645"]
 [ext_resource type="PackedScene" uid="uid://dbnqmcdv50k66" path="res://scenes/heart.tscn" id="3_jxe34"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwgxs"]
@@ -77,6 +78,7 @@ sources/0 = SubResource("TileSetAtlasSource_rwgxs")
 [node name="Room" type="Node2D"]
 script = ExtResource("1_ffxv4")
 enemy_node = ExtResource("2_14vil")
+coin_node = ExtResource("3_jn645")
 heart_node = ExtResource("3_jxe34")
 
 [node name="Base" type="TileMapLayer" parent="." groups=["walls"]]

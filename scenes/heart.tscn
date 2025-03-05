@@ -3,8 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bkbo1hwffi5l6" path="res://assets/art/heart.png" id="1_v30as"]
 [ext_resource type="Script" uid="uid://d1q5dl4xpm54v" path="res://scripts/heart.gd" id="1_ycbwg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v30as"]
-size = Vector2(40, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycbwg"]
 
 [node name="heart" type="Area2D"]
 script = ExtResource("1_ycbwg")
@@ -14,6 +13,6 @@ scale = Vector2(5, 5)
 texture = ExtResource("1_v30as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_v30as")
+shape = SubResource("RectangleShape2D_ycbwg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

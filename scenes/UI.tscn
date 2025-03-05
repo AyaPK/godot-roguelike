@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkxy7mooincbg"]
+
+[ext_resource type="Texture2D" uid="uid://cb432eeb2f0rd" path="res://assets/art/heart_ui.png" id="1_5en4g"]
+[ext_resource type="Script" uid="uid://bu7pwrc3q2ei8" path="res://scripts/ui.gd" id="1_ua6yw"]
+[ext_resource type="Texture2D" uid="uid://c0iw6bmcbhanj" path="res://assets/art/coin.png" id="2_ua6yw"]
+[ext_resource type="Texture2D" uid="uid://b0yvom1hk0rbm" path="res://assets/art/key.png" id="3_75u2n"]
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_ua6yw")
+
+[node name="healthbar" type="Panel" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -65.0
+offset_right = 238.0
+offset_bottom = -25.0
+grow_vertical = 0
+
+[node name="heart1" type="Sprite2D" parent="healthbar"]
+position = Vector2(28, 19)
+scale = Vector2(5, 5)
+texture = ExtResource("1_5en4g")
+hframes = 3
+frame = 2
+
+[node name="heart2" type="Sprite2D" parent="healthbar"]
+position = Vector2(77, 20)
+scale = Vector2(5, 5)
+texture = ExtResource("1_5en4g")
+hframes = 3
+frame = 2
+
+[node name="heart3" type="Sprite2D" parent="healthbar"]
+position = Vector2(124, 20)
+scale = Vector2(5, 5)
+texture = ExtResource("1_5en4g")
+hframes = 3
+frame = 2
+
+[node name="heart4" type="Sprite2D" parent="healthbar"]
+position = Vector2(172, 20)
+scale = Vector2(5, 5)
+texture = ExtResource("1_5en4g")
+hframes = 3
+frame = 2
+
+[node name="statbar" type="Panel" parent="."]
+offset_left = 39.0
+offset_top = 537.0
+offset_right = 236.0
+offset_bottom = 577.0
+
+[node name="coin" type="Sprite2D" parent="statbar"]
+position = Vector2(27, 20)
+scale = Vector2(5, 5)
+texture = ExtResource("2_ua6yw")
+
+[node name="Label" type="Label" parent="statbar"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = -8.0
+offset_right = 120.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 39
+text = "99"
+
+[node name="Label2" type="Label" parent="statbar"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 1.0
+offset_right = 97.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="key" type="Sprite2D" parent="statbar"]
+modulate = Color(1, 1, 1, 0.0431373)
+position = Vector2(173, 18)
+scale = Vector2(5, 5)
+texture = ExtResource("3_75u2n")

@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	player_input()
 
 func player_input() -> void:

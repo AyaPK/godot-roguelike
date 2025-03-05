@@ -4,7 +4,7 @@ class_name Generator extends Node
 
 var map_width: int = 7
 var map_height: int = 7
-var rooms: int = 5
+var rooms: int = 6
 var room_counter: int = 0
 var rooms_instantiated = false
 var first_room_pos: Vector2

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfxmjacxg3s28"]
+
+[ext_resource type="Texture2D" uid="uid://cb432eeb2f0rd" path="res://assets/art/heart_ui.png" id="1_y7sw2"]
+
+[node name="Heart 1" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_y7sw2")
+hframes = 3
+frame = 2

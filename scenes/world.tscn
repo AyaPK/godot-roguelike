@@ -27,7 +27,7 @@ max_hearts = 2
 [node name="Enemies" type="Node" parent="." groups=["Enemy_Manager"]]
 script = ExtResource("5_qfnet")
 
+[node name="CanvasLayer" parent="." instance=ExtResource("7_i7141")]
+
 [node name="Enemy" parent="." instance=ExtResource("5_71j4m")]
 position = Vector2(220, 220)
-
-[node name="CanvasLayer" parent="." instance=ExtResource("7_i7141")]

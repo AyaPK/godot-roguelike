@@ -1,6 +1,9 @@
 class_name Player extends CharacterBody2D
 
 signal player_moved
+signal player_hit
+
+var has_key: bool = false
 
 func _physics_process(_delta: float) -> void:
 	player_input()
@@ -40,10 +43,11 @@ func move(dir: Vector2) -> void:
 	player_moved.emit()
 
 func take_damage(damage_taken: int) -> void:
-	PlayerData.health -= damage_taken
+	PlayerData.change_health(-1)
 	$AnimationPlayer.play("hit")
 	if PlayerData.health <= 0:
 		get_tree().reload_current_scene()
+	player_hit.emit()
 
 func try_attack(direction: Vector2) -> void:
 	var space_rid = get_world_2d().space

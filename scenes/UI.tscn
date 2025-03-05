@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkxy7mooincbg"]
+[gd_scene load_steps=6 format=3 uid="uid://dkxy7mooincbg"]
 
 [ext_resource type="Script" uid="uid://bu7pwrc3q2ei8" path="res://scripts/ui.gd" id="1_ua6yw"]
 [ext_resource type="PackedScene" uid="uid://cfxmjacxg3s28" path="res://scenes/ui_heart.tscn" id="2_75u2n"]
 [ext_resource type="Texture2D" uid="uid://c0iw6bmcbhanj" path="res://assets/art/coin.png" id="2_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://b0yvom1hk0rbm" path="res://assets/art/key.png" id="3_75u2n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua6yw"]
+bg_color = Color(0, 0, 0, 0.176471)
 
 [node name="ui" type="CanvasLayer"]
 script = ExtResource("1_ua6yw")
@@ -12,19 +15,20 @@ script = ExtResource("1_ua6yw")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 38.0
-offset_top = -65.0
-offset_right = 238.0
-offset_bottom = -25.0
+offset_left = 63.0
+offset_top = -593.0
+offset_right = 263.0
+offset_bottom = -553.0
 grow_vertical = 0
 
 [node name="Heart 1" parent="HealthBar" instance=ExtResource("2_75u2n")]
+position = Vector2(27, 19)
 
 [node name="statbar" type="Panel" parent="."]
-offset_left = 39.0
-offset_top = 537.0
-offset_right = 236.0
-offset_bottom = 577.0
+offset_left = 63.0
+offset_top = 105.0
+offset_right = 260.0
+offset_bottom = 145.0
 
 [node name="coin" type="Sprite2D" parent="statbar"]
 position = Vector2(27, 20)
@@ -54,3 +58,30 @@ modulate = Color(1, 1, 1, 0.0431373)
 position = Vector2(173, 18)
 scale = Vector2(5, 5)
 texture = ExtResource("3_75u2n")
+
+[node name="minimap" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 200)
+offset_left = 888.0
+offset_top = 38.0
+offset_right = 1088.0
+offset_bottom = 238.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua6yw")
+
+[node name="GridContainer" type="GridContainer" parent="minimap"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 42.0
+offset_right = 185.0
+offset_bottom = 193.0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 6
+
+[node name="leveltext" type="Label" parent="minimap"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 3.0
+offset_right = 133.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"

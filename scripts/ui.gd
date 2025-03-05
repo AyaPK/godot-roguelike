@@ -1,15 +1,18 @@
 extends CanvasLayer
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
-@onready var generation: Node = $"../Generation"
+@onready var generation: Generator = $"../Generation"
+
+@onready var grid: PackedScene = load("res://scenes/mini_map_grid.tscn")
 
 func _ready() -> void:
 	update_health_bar()
 	PlayerData.health_changed.connect(update_health_bar)
+	generate_minimap()
 
 func _process(_delta: float) -> void:
 	$statbar/coincount.text = str(PlayerData.coins)
-	
+	update_minimap()
 	if player.has_key:
 		$statbar/key.modulate = "ffffff"
 	else:
@@ -39,3 +42,26 @@ func update_health_bar():
 		var heart = heart_container.get_child(i)
 		var heart_health = clamp(health - (i * 2), 0, 2)
 		heart.frame = heart_health
+
+func generate_minimap() -> void:
+	$minimap/GridContainer.columns = generation.map_width
+	for i in range(generation.map_height):
+		for j in range(generation.map_width):
+			var panel = grid.instantiate()
+			if generation.map[j][i] == false:
+				panel.modulate = Color(1, 1, 1, 0)  # Transparent
+			else:
+				panel.is_room = true
+			panel.pos = Vector2i(j, i)
+			$minimap/GridContainer.add_child(panel)
+
+func update_minimap() -> void:
+	$minimap/leveltext.text = "Level "+str(PlayerData.level)
+	
+	var pos: Vector2i = (player.global_position / 600)
+	var panels: Array = $minimap/GridContainer.get_children()
+	for panel: MinimapPanel in panels:
+		if panel.is_room:
+			panel.modulate = "ffffff"
+		if panel.pos == pos:
+			panel.modulate = "007a27"

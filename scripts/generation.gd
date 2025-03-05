@@ -1,4 +1,4 @@
-extends Node
+class_name Generator extends Node
 
 @onready var room_scene: PackedScene = load("res://scenes/room.tscn")
 
@@ -8,6 +8,7 @@ var rooms: int = 12
 var room_counter: int = 0
 var rooms_instantiated = false
 var first_room_pos: Vector2
+
 var map: Array
 var room_nodes: Array
 

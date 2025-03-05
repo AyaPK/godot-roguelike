@@ -13,6 +13,9 @@ var inside_height: int = 7
 var used_positions : Array
 
 func _ready():
+	for c in get_children():
+		if c is TileMapLayer:
+			c.modulate = PlayerData.random_modulate
 	if Generation:
 		generate_interior()
 

@@ -18,11 +18,11 @@ position = Vector2(60, 60)
 [node name="Generation" parent="." instance=ExtResource("3_k0juu")]
 script = ExtResource("4_71j4m")
 enemy_spawn_chance = 0.8
-coin_spawn_chance = 0.4
-heart_spawn_chance = 0.3
+coin_spawn_chance = 0.3
+heart_spawn_chance = 0.5
 max_enemies = 2
-max_coins = 2
-max_hearts = 2
+max_coins = 3
+max_hearts = 3
 
 [node name="Enemies" type="Node" parent="." groups=["Enemy_Manager"]]
 script = ExtResource("5_qfnet")

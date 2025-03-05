@@ -39,8 +39,8 @@ func get_random_direction() -> Vector2:
 
 func take_damage(damage_taken: int) -> void:
 	hp -= damage_taken
-	if hp <= 0:
-		queue_free()
 	$AnimationPlayer.play("hit")
 	if randf() > attack_chance:
 		player.take_damage(damage)
+	if hp <= 0:
+		queue_free()

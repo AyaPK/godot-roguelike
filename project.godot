@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerData="*res://globals/PlayerData.gd"
+Sfx="*res://scenes/SFX.tscn"
 
 [global_group]
 

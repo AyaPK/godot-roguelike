@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4r83x1d6bnlm"]
+
+[ext_resource type="AudioStream" uid="uid://chby07eu0dub5" path="res://sfx/coin.wav" id="1_84khp"]
+[ext_resource type="Script" uid="uid://ccfwutgacmvcl" path="res://scripts/sfx.gd" id="1_krya2"]
+[ext_resource type="AudioStream" uid="uid://dbpl0am72pe65" path="res://sfx/heart.wav" id="2_krya2"]
+[ext_resource type="AudioStream" uid="uid://byme82hy7n247" path="res://sfx/key.wav" id="3_voggf"]
+[ext_resource type="AudioStream" uid="uid://baevhj1ukqap0" path="res://sfx/door.wav" id="4_0jrv7"]
+[ext_resource type="AudioStream" uid="uid://b3jetpsp5q6c1" path="res://sfx/death.wav" id="5_1pw5g"]
+[ext_resource type="AudioStream" uid="uid://blkm1v5pm3ym6" path="res://sfx/music.mp3" id="7_voggf"]
+
+[node name="Sfx" type="Node2D"]
+script = ExtResource("1_krya2")
+
+[node name="coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_84khp")
+
+[node name="heart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_krya2")
+volume_db = -5.0
+
+[node name="key" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_voggf")
+volume_db = -10.0
+
+[node name="door" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0jrv7")
+
+[node name="death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1pw5g")
+volume_db = -3.0
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_voggf")
+volume_db = -12.0
+autoplay = true

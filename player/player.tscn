@@ -1,22 +1,64 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcxsq4hvthnmt"]
+[gd_scene load_steps=7 format=3 uid="uid://dcxsq4hvthnmt"]
 
 [ext_resource type="Texture2D" uid="uid://cckckhfe4g3q4" path="res://assets/art/character.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bqptt2y2qjo18" path="res://scripts/player.gd" id="1_rkbax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oul6g"]
-size = Vector2(8, 8)
+size = Vector2(40, 40)
+
+[sub_resource type="Animation" id="Animation_rkbax"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.102696, 0.166667, 0.198452),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g1dw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1dw6"]
+_data = {
+&"RESET": SubResource("Animation_g1dw6"),
+&"hit": SubResource("Animation_rkbax")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
-scale = Vector2(5, 5)
 script = ExtResource("1_rkbax")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
 texture = ExtResource("1_oul6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.29153e-07, 1.90735e-07)
+position = Vector2(-4.76837e-07, 0)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oul6g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g1dw6")
+}

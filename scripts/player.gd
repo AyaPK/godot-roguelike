@@ -18,7 +18,14 @@ func player_input() -> void:
 	elif Input.is_action_just_pressed("move_down"):
 		velocity = Vector2.DOWN
 		move(velocity)
-	
+	elif Input.is_action_just_pressed("atk_up"):
+		try_attack(Vector2.UP)
+	elif Input.is_action_just_pressed("atk_down"):
+		try_attack(Vector2.DOWN)
+	elif Input.is_action_just_pressed("atk_left"):
+		try_attack(Vector2.LEFT)
+	elif Input.is_action_just_pressed("atk_right"):
+		try_attack(Vector2.RIGHT)
 
 func move(dir: Vector2) -> void:
 	var space_rid = get_world_2d().space
@@ -31,3 +38,20 @@ func move(dir: Vector2) -> void:
 			return
 	position += 40 * dir
 	player_moved.emit()
+
+func take_damage(damage_taken: int) -> void:
+	PlayerData.health -= damage_taken
+	$AnimationPlayer.play("hit")
+	if PlayerData.health <= 0:
+		get_tree().reload_current_scene()
+
+func try_attack(direction: Vector2) -> void:
+	var space_rid = get_world_2d().space
+	var space_state = PhysicsServer2D.space_get_direct_state(space_rid)
+	var query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(48, 48) * direction)
+	var result = space_state.intersect_ray(query)
+	if result:
+		if result.collider.is_in_group("Enemy"):
+			result.collider.take_damage(1)
+	else:
+		player_moved.emit()

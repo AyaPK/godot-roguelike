@@ -16,6 +16,7 @@ func _ready():
 		map.append([])
 		for y in range(map_height):
 			map[x].append(false)
+	seed(PlayerData.map_seed)
 	#generate()
 
 func generate() -> void:

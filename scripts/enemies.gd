@@ -11,7 +11,6 @@ func check_enemies() -> void:
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	
 func on_player_moved() -> void:
-	print(enemies)
 	for enemy in enemies:
 		if is_instance_valid(enemy):
 			enemy.move()

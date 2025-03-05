@@ -7,10 +7,8 @@ var damage: int = 1
 var attack_chance: float = 0.5
 
 func move() -> void:
-	print("anana")
-	if randf() < 0.2:
+	if randf() < 0.5:
 		return
-	print("enenene")
 	var dir: Vector2 = Vector2.ZERO
 	var can_move: bool
 	
@@ -38,3 +36,11 @@ func get_random_direction() -> Vector2:
 		3:
 			return Vector2.LEFT
 	return Vector2.ZERO
+
+func take_damage(damage_taken: int) -> void:
+	hp -= damage_taken
+	if hp <= 0:
+		queue_free()
+	$AnimationPlayer.play("hit")
+	if randf() > attack_chance:
+		player.take_damage(damage)

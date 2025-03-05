@@ -11,13 +11,20 @@ var first_room_pos: Vector2
 var map: Array
 var room_nodes: Array
 
+@export var enemy_spawn_chance: float = 0.2
+@export var coin_spawn_chance: float = 0.1
+@export var heart_spawn_chance: float = 0.1
+@export var max_enemies: int = 3
+@export var max_coins: int = 0
+@export var max_hearts: int = 0
+
 func _ready():
 	for x in range(map_width):
 		map.append([])
 		for y in range(map_height):
 			map[x].append(false)
 	seed(PlayerData.map_seed)
-	#generate()
+	generate()
 
 func generate() -> void:
 	check_room(3,3,0,Vector2.ZERO,true)

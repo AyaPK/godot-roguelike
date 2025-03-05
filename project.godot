@@ -24,6 +24,7 @@ PlayerData="*res://globals/PlayerData.gd"
 walls=""
 Player=""
 Enemy=""
+Enemy_Manager=""
 
 [input]
 

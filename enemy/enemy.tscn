@@ -43,7 +43,7 @@ _data = {
 &"hit": SubResource("Animation_ofsxj")
 }
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy", "walls"]]
 script = ExtResource("1_ofsxj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

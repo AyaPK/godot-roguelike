@@ -102,3 +102,19 @@ func instantiate_rooms() -> void:
 				room.Generation = self
 			$"..".call_deferred("add_child", room)
 			room_nodes.append(room)
+	get_tree().create_timer(0.5)
+	calculate_key_and_exit()
+
+func calculate_key_and_exit() -> void:
+	var max_dis : float = 0
+	var room_a : Node2D = null
+	var room_b : Node2D = null
+	for a : Node2D in room_nodes:
+		for b : Node2D in room_nodes:
+			var dis : float = a.position.distance_to(b.position)
+			if dis > max_dis:
+				room_a = a
+				room_b = b
+				max_dis = dis
+	room_a.spawn_node(room_a.key_node)
+	room_b.spawn_node(room_b.exit_door_node)

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_nodes_in_group("Player")[0]
 
+var DEATH_EXPLOSION = preload("res://scenes/explosion.tscn")
+
 var hp: int = 3
 var damage: int = 1
 var attack_chance: float = 0.5
@@ -43,4 +45,11 @@ func take_damage(damage_taken: int) -> void:
 	if randf() > attack_chance:
 		player.take_damage(damage)
 	if hp <= 0:
-		queue_free()
+		_on_kill()
+
+func _on_kill() -> void:
+	var _particle = DEATH_EXPLOSION.instantiate()
+	_particle.global_position = global_position
+	_particle.emitting = true
+	get_tree().current_scene.add_child(_particle)
+	queue_free()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://8kbyd5isujrl"]
+[gd_scene load_steps=7 format=4 uid="uid://8kbyd5isujrl"]
 
 [ext_resource type="Script" uid="uid://yd7y28p50pny" path="res://scripts/store.gd" id="1_atuvt"]
 [ext_resource type="PackedScene" uid="uid://6pfhelitf4oh" path="res://scenes/shopkeep.tscn" id="2_codmc"]
 [ext_resource type="PackedScene" uid="uid://bwdpdotk3txgg" path="res://scenes/shop_item.tscn" id="4_dq3y1"]
-[ext_resource type="Texture2D" uid="uid://c0iw6bmcbhanj" path="res://assets/art/coin.png" id="5_gf6f2"]
 [ext_resource type="Texture2D" uid="uid://ckv0lcmorb02i" path="res://assets/art/caves.png" id="7_fygda"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwgxs"]
@@ -131,6 +130,8 @@ tile_set = SubResource("TileSet_e5uuo")
 [node name="Shopkeep" parent="." instance=ExtResource("2_codmc")]
 position = Vector2(178, 134)
 
-[node name="shop_item" parent="." instance=ExtResource("4_dq3y1")]
-position = Vector2(94, 218)
-item_sprite = ExtResource("5_gf6f2")
+[node name="shop_item_1" parent="." instance=ExtResource("4_dq3y1")]
+position = Vector2(120, 200)
+
+[node name="shop_item_2" parent="." instance=ExtResource("4_dq3y1")]
+position = Vector2(240, 200)

@@ -2,6 +2,12 @@ class_name store_room extends base_room
 
 @export var shopkeep_node: PackedScene
 
+var item_resources = [
+	"res://item_resources/heart_up.tres"
+]
+
+var items = []
+
 func _ready():
 	for c in get_children():
 		if c is TileMapLayer:
@@ -29,4 +35,7 @@ func spawn_node(node_scene: PackedScene, min_ins: int = 0, max_ins: int = 0) -> 
 	pass
 
 func generate_interior() -> void:
-	pass
+	$shop_item_1.item_resource = load(item_resources.pick_random())
+	$shop_item_2.item_resource = load(item_resources.pick_random())
+	items.append($shop_item_1.item_resource)
+	

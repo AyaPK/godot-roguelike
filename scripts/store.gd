@@ -11,6 +11,7 @@ var item_resources: Array[String] = [
 var items: Array
 
 func _ready():
+	print(PlayerData.map_seed)
 	items = []
 	for c in get_children():
 		if c is TileMapLayer:

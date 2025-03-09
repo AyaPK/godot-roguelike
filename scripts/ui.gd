@@ -2,12 +2,14 @@ extends CanvasLayer
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 @onready var generation: Generator = $"../Generation"
+@onready var death_anim: AnimationPlayer = $YouDied/DeathAnim
 
 @onready var grid: PackedScene = load("res://scenes/mini_map_grid.tscn")
 
 func _ready() -> void:
 	update_health_bar()
 	PlayerData.health_changed.connect(update_health_bar)
+	player.died.connect(show_you_died)
 	generate_minimap()
 
 func _process(_delta: float) -> void:
@@ -68,3 +70,16 @@ func update_minimap() -> void:
 			panel.modulate = "ffffff"
 		if panel.pos == pos:
 			panel.modulate = "007a27"
+
+func show_you_died() -> void:
+	$YouDied/youdiedtext2.text = "Highest level: "+str(PlayerData.level)
+	death_anim.play("show")
+
+func hide_you_died() -> void:
+	death_anim.play("hide")
+	await death_anim.animation_finished
+	player.respawn()
+
+
+func _on_button_pressed() -> void:
+	hide_you_died()

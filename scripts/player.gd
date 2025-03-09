@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 signal player_moved
 signal player_hit
+signal died
 
 const WALK = preload("res://sfx/walk.wav")
 const HURT = preload("res://sfx/Hurt.wav")
@@ -57,19 +58,14 @@ func take_damage(_damage_taken: int) -> void:
 	PlayerData.change_health(-1)
 	$AnimationPlayer.play("hit")
 	if PlayerData.health <= 0:
-		PlayerData.max_health = PlayerData.default_max_health
-		PlayerData.health = PlayerData.max_health
-		PlayerData.coins = 0
-		PlayerData.level = 1
-		PlayerData.atk = 1
-		PlayerData.def = 1
 		Sfx.death.play()
-		visible = false
+		hide()
 		process_mode = Node.PROCESS_MODE_DISABLED
 		var _particle = EXPLOSION.instantiate()
 		_particle.global_position = global_position
 		_particle.emitting = true
 		get_tree().current_scene.add_child(_particle)
+		died.emit()
 		#get_tree().reload_current_scene()
 	elif PlayerData.health > 0:
 		$SFX.stream = HURT
@@ -92,4 +88,15 @@ func try_attack(direction: Vector2) -> void:
 func play_attack() -> void:
 	$swing.frame = 0
 	$swing.play()
-	
+
+func respawn() -> void:
+	PlayerData.map_seed = randi_range(0, 999999)
+	PlayerData.max_health = PlayerData.default_max_health
+	PlayerData.health = PlayerData.max_health
+	PlayerData.coins = 0
+	PlayerData.level = 1
+	PlayerData.atk = 1
+	PlayerData.def = 1
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	show()
+	get_tree().reload_current_scene()

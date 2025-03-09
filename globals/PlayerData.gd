@@ -1,6 +1,6 @@
 extends Node
 
-var default_max_health: int = 1
+var default_max_health: int = 8
 var max_health: int = default_max_health+0
 var health: int = max_health
 var coins: int = 0

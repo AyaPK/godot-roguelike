@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkxy7mooincbg"]
+[gd_scene load_steps=13 format=3 uid="uid://dkxy7mooincbg"]
 
 [ext_resource type="Script" uid="uid://bu7pwrc3q2ei8" path="res://scripts/ui.gd" id="1_ua6yw"]
 [ext_resource type="PackedScene" uid="uid://cfxmjacxg3s28" path="res://scenes/ui_heart.tscn" id="2_75u2n"]
@@ -9,6 +9,61 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua6yw"]
 bg_color = Color(0, 0, 0, 0.176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wlde"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.768627)
+
+[sub_resource type="Animation" id="Animation_3wlde"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xpksx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_24e4x"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukj8e"]
+_data = {
+&"RESET": SubResource("Animation_xpksx"),
+&"hide": SubResource("Animation_24e4x"),
+&"show": SubResource("Animation_3wlde")
+}
 
 [node name="ui" type="CanvasLayer"]
 script = ExtResource("1_ua6yw")
@@ -121,3 +176,43 @@ offset_right = 133.0
 offset_bottom = 31.0
 theme_override_font_sizes/font_size = 20
 text = "Level 1"
+
+[node name="YouDied" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1150.0
+offset_bottom = 647.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3wlde")
+
+[node name="youdiedtext" type="Label" parent="YouDied"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 172.0
+offset_right = 715.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 60
+text = "YOU DIED"
+
+[node name="youdiedtext2" type="Label" parent="YouDied"]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 261.0
+offset_right = 848.0
+offset_bottom = 344.0
+theme_override_font_sizes/font_size = 60
+text = "Level Reached: 99"
+
+[node name="Button" type="Button" parent="YouDied"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 365.0
+offset_right = 634.0
+offset_bottom = 437.0
+theme_override_font_sizes/font_size = 40
+text = "Retry"
+
+[node name="DeathAnim" type="AnimationPlayer" parent="YouDied"]
+libraries = {
+&"": SubResource("AnimationLibrary_ukj8e")
+}
+
+[connection signal="pressed" from="YouDied/Button" to="." method="_on_button_pressed"]

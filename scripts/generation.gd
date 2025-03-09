@@ -1,6 +1,7 @@
 class_name Generator extends Node
 
 @onready var room_scene: PackedScene = load("res://scenes/room.tscn")
+@onready var store_scene: PackedScene = load("res://scenes/store.tscn")
 
 var map_width: int = 7
 var map_height: int = 7
@@ -11,6 +12,8 @@ var first_room_pos: Vector2
 
 var map: Array
 var room_nodes: Array
+
+var store_exists: bool = false
 
 @export var enemy_spawn_chance: float = 0.2
 @export var coin_spawn_chance: float = 0.1
@@ -89,6 +92,12 @@ func instantiate_rooms() -> void:
 			if !map[x][y]:
 				continue
 			var room = room_scene.instantiate()
+			var is_store = false
+			
+			if !store_exists and randf_range(0,1) < 1:
+				room = store_scene.instantiate()
+				store_exists = true
+				is_store = true
 			
 			room.position = Vector2(x, y) * 600
 			if y > 0 and map[x][y - 1]:
@@ -102,7 +111,8 @@ func instantiate_rooms() -> void:
 			if first_room_pos != Vector2(x, y):
 				room.Generation = self
 			$"..".call_deferred("add_child", room)
-			room_nodes.append(room)
+			if !is_store:
+				room_nodes.append(room)
 	get_tree().create_timer(0.5)
 	calculate_key_and_exit()
 

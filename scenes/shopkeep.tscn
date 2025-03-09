@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://6pfhelitf4oh"]
+
+[ext_resource type="Texture2D" uid="uid://idg08ynafrom" path="res://assets/art/shopkeep.png" id="1_0gsoh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev18q"]
+size = Vector2(44, 43)
+
+[node name="Shopkeep" type="CharacterBody2D" groups=["walls"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_0gsoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ev18q")

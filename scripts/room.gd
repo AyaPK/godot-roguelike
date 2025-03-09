@@ -1,4 +1,4 @@
-extends Node2D
+class_name base_room extends Node2D
 
 @export var enemy_node : PackedScene
 @export var coin_node : PackedScene

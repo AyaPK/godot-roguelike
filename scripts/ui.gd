@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 
 
 func update_health_bar():
+	@warning_ignore("integer_division")
 	var max_hearts = PlayerData.max_health / 2
 	var health = PlayerData.health
 	var heart_container = $HealthBar

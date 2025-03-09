@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://2glu4dyd453e"
 [resource]
 script = ExtResource("1_6pu65")
 name = "Heart Up"
-cost = 2
+cost = 20
 sprite = ExtResource("3_a6373")
 on_buy = SubResource("Resource_tc7tw")
 metadata/_custom_type_script = "uid://whwvkd2on3v4"

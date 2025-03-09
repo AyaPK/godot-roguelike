@@ -3,9 +3,13 @@ class_name Generator extends Node
 @onready var room_scene: PackedScene = load("res://scenes/room.tscn")
 @onready var store_scene: PackedScene = load("res://scenes/store.tscn")
 
-var map_width: int = 7
-var map_height: int = 7
-var rooms: int = 6
+var min_size: int = 7
+var max_size: int = 7
+var min_rooms: int = 6
+var max_rooms: int = 12
+var map_width: int
+var map_height: int
+var rooms: int
 var room_counter: int = 0
 var rooms_instantiated = false
 var first_room_pos: Vector2
@@ -23,6 +27,9 @@ var store_exists: bool = false
 @export var max_hearts: int = 0
 
 func _ready():
+	rooms = randi_range(min_rooms, max_rooms)
+	map_height = randi_range(min_size, max_size)
+	map_width = randi_range(min_size, max_size)
 	for x in range(map_width):
 		map.append([])
 		for y in range(map_height):
@@ -33,7 +40,7 @@ func _ready():
 func generate() -> void:
 	check_room(3,3,0,Vector2.ZERO,true)
 	instantiate_rooms()
-	preview()
+	#preview()
 	$"../Player".global_position = (first_room_pos * 600) + Vector2(160, 160)
 
 func preview() -> void:
@@ -94,7 +101,7 @@ func instantiate_rooms() -> void:
 			var room = room_scene.instantiate()
 			var is_store = false
 			
-			if !store_exists and randf_range(0,1) < 1:
+			if !store_exists and randf_range(0,1) < 0.1:
 				room = store_scene.instantiate()
 				store_exists = true
 				is_store = true

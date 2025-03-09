@@ -3,7 +3,9 @@ class_name store_room extends base_room
 @export var shopkeep_node: PackedScene
 
 var item_resources = [
-	"res://item_resources/heart_up.tres"
+	"res://item_resources/heart_up.tres",
+	"res://item_resources/atk_up.tres",
+	"res://item_resources/def_up.tres",
 ]
 
 var items = []

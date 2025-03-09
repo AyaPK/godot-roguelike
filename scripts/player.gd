@@ -58,6 +58,8 @@ func take_damage(_damage_taken: int) -> void:
 	if PlayerData.health <= 0:
 		Sfx.death.play()
 		get_tree().reload_current_scene()
+		PlayerData.max_health = PlayerData.default_max_health
+		PlayerData.health = PlayerData.max_health
 	if PlayerData.health > 0:
 		$SFX.stream = HURT
 		$SFX.play()
@@ -72,7 +74,7 @@ func try_attack(direction: Vector2) -> void:
 	$SFX2.play()
 	if result:
 		if result.collider.is_in_group("Enemy"):
-			result.collider.take_damage(1)
+			result.collider.take_damage(PlayerData.atk)
 	else:
 		player_moved.emit()
 

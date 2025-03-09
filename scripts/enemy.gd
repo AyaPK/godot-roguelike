@@ -4,9 +4,14 @@ extends CharacterBody2D
 
 var DEATH_EXPLOSION = preload("res://scenes/explosion.tscn")
 
-var hp: int = 3
-var damage: int = 1
-var attack_chance: float = 0.5
+var hp: int
+var damage: int
+var attack_chance: float
+
+func _ready() -> void:
+	hp = 3 + PlayerData.level
+	damage = 2 + floori(PlayerData.level/2)
+	attack_chance = randi_range(0.2, 1)
 
 func move() -> void:
 	if randf() < 0.5:
@@ -43,7 +48,10 @@ func take_damage(damage_taken: int) -> void:
 	hp -= damage_taken
 	$AnimationPlayer.play("hit")
 	if randf() > attack_chance:
-		player.take_damage(damage)
+		var damage_dealt: int = damage - PlayerData.def
+		if damage_dealt < 0:
+			damage_dealt = 0
+		player.take_damage(damage_dealt)
 	if hp <= 0:
 		_on_kill()
 
@@ -51,5 +59,6 @@ func _on_kill() -> void:
 	var _particle = DEATH_EXPLOSION.instantiate()
 	_particle.global_position = global_position
 	_particle.emitting = true
-	get_tree().current_scene.add_child(_particle)
+	PlayerData.coins += 1
+	get_parent().add_child(_particle)
 	queue_free()

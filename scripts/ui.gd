@@ -12,6 +12,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	$statbar/coincount.text = str(PlayerData.coins)
+	$statbar2/shieldstat.text = str(PlayerData.def)
+	$statbar2/swordstat.text = str(PlayerData.atk)
 	update_minimap()
 	if player.has_key:
 		$statbar/key.modulate = "ffffff"

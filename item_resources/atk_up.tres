@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="item" load_steps=5 format=3 uid="uid://ba4pbef55gtkq"]
+
+[ext_resource type="Script" uid="uid://vurufr1o1yr3" path="res://item_resources/buy_effects/atk_up.gd" id="1_lrbt6"]
+[ext_resource type="Script" uid="uid://whwvkd2on3v4" path="res://item_resources/item.gd" id="2_2ifls"]
+[ext_resource type="Texture2D" uid="uid://bn52kxe6e77gj" path="res://assets/art/sword_up.png" id="2_ohm45"]
+
+[sub_resource type="Resource" id="Resource_2ifls"]
+script = ExtResource("1_lrbt6")
+metadata/_custom_type_script = "uid://vurufr1o1yr3"
+
+[resource]
+script = ExtResource("2_2ifls")
+name = "Attack Up"
+cost = 10
+sprite = ExtResource("2_ohm45")
+on_buy = SubResource("Resource_2ifls")
+metadata/_custom_type_script = "uid://whwvkd2on3v4"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkxy7mooincbg"]
+[gd_scene load_steps=8 format=3 uid="uid://dkxy7mooincbg"]
 
 [ext_resource type="Script" uid="uid://bu7pwrc3q2ei8" path="res://scripts/ui.gd" id="1_ua6yw"]
 [ext_resource type="PackedScene" uid="uid://cfxmjacxg3s28" path="res://scenes/ui_heart.tscn" id="2_75u2n"]
 [ext_resource type="Texture2D" uid="uid://c0iw6bmcbhanj" path="res://assets/art/coin.png" id="2_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://b0yvom1hk0rbm" path="res://assets/art/key.png" id="3_75u2n"]
+[ext_resource type="Texture2D" uid="uid://bgxll612pfi5q" path="res://assets/art/sword.png" id="5_3wlde"]
+[ext_resource type="Texture2D" uid="uid://di3vksdv7rbyr" path="res://assets/art/shield.png" id="6_xpksx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua6yw"]
 bg_color = Color(0, 0, 0, 0.176471)
@@ -58,6 +60,38 @@ modulate = Color(1, 1, 1, 0.0431373)
 position = Vector2(173, 18)
 scale = Vector2(5, 5)
 texture = ExtResource("3_75u2n")
+
+[node name="statbar2" type="Panel" parent="."]
+offset_left = 63.0
+offset_top = 154.0
+offset_right = 260.0
+offset_bottom = 194.0
+
+[node name="shieldstat" type="Label" parent="statbar2"]
+offset_left = 132.0
+offset_top = -8.0
+offset_right = 197.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 39
+text = "1"
+
+[node name="swordstat" type="Label" parent="statbar2"]
+offset_left = 45.0
+offset_top = -8.0
+offset_right = 90.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 39
+text = "1"
+
+[node name="Sprite2D" type="Sprite2D" parent="statbar2"]
+position = Vector2(25, 20)
+scale = Vector2(4, 4)
+texture = ExtResource("5_3wlde")
+
+[node name="Sprite2D2" type="Sprite2D" parent="statbar2"]
+position = Vector2(117, 20)
+scale = Vector2(4, 4)
+texture = ExtResource("6_xpksx")
 
 [node name="minimap" type="Panel" parent="."]
 custom_minimum_size = Vector2(200, 200)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="item" load_steps=5 format=3 uid="uid://uvsuc270kwii"]
+
+[ext_resource type="Script" uid="uid://8kj6mcf4s4rf" path="res://item_resources/buy_effects/def_up.gd" id="1_hrs63"]
+[ext_resource type="Script" uid="uid://whwvkd2on3v4" path="res://item_resources/item.gd" id="2_t7n2i"]
+[ext_resource type="Texture2D" uid="uid://bbcx66nuktaty" path="res://assets/art/shield_up.png" id="3_hrs63"]
+
+[sub_resource type="Resource" id="Resource_t7n2i"]
+script = ExtResource("1_hrs63")
+metadata/_custom_type_script = "uid://8kj6mcf4s4rf"
+
+[resource]
+script = ExtResource("2_t7n2i")
+name = "Defense Up"
+cost = 10
+sprite = ExtResource("3_hrs63")
+on_buy = SubResource("Resource_t7n2i")
+metadata/_custom_type_script = "uid://whwvkd2on3v4"

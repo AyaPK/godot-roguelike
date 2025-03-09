@@ -10,8 +10,8 @@ var attack_chance: float
 
 func _ready() -> void:
 	hp = 3 + PlayerData.level
-	damage = 2 + floori(PlayerData.level/2)
-	attack_chance = randi_range(0.2, 1)
+	damage = 2 + floori(PlayerData.level/2.0)
+	attack_chance = randf_range(0.2, 1)
 
 func move() -> void:
 	if randf() < 0.5:
@@ -52,7 +52,7 @@ func take_damage(damage_taken: int) -> void:
 		if damage_dealt < 0:
 			damage_dealt = 0
 		player.take_damage(damage_dealt)
-	if hp <= 0:
+	if hp <= 0 and PlayerData.health > 0:
 		_on_kill()
 
 func _on_kill() -> void:
@@ -60,5 +60,5 @@ func _on_kill() -> void:
 	_particle.global_position = global_position
 	_particle.emitting = true
 	PlayerData.coins += 1
-	get_parent().add_child(_particle)
+	get_tree().current_scene.add_child(_particle)
 	queue_free()

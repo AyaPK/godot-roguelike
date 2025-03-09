@@ -1,11 +1,11 @@
 extends Node
 
-var default_max_health: int = 10
+var default_max_health: int = 1
 var max_health: int = default_max_health+0
 var health: int = max_health
 var coins: int = 0
 var level: int = 1
-var map_seed: int = 943427
+var map_seed: int = randi_range(0,99999999)
 var atk: int = 1
 var def: int = 1
 

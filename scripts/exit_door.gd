@@ -6,4 +6,4 @@ func _on_body_entered(body: Node2D) -> void:
 			PlayerData.level += 1
 			PlayerData.map_seed += randi_range(1, 6969)
 			Sfx.door.play()
-			get_tree().reload_current_scene()
+			get_tree().reload_current_scene.call_deferred()

@@ -1,48 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv22lgmgteo0a"]
-
-[sub_resource type="Curve" id="Curve_3oo6d"]
-_limits = [-360.0, 360.0, 0.0, 1.0]
-_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_17npe"]
-width = 2048
-curve = SubResource("Curve_3oo6d")
-
-[sub_resource type="Gradient" id="Gradient_nfeox"]
-offsets = PackedFloat32Array(0, 0.579088, 1)
-colors = PackedColorArray(0.51178, 0, 0.211718, 1, 1, 1, 1, 1, 0.782246, 0.601149, 5.77569e-07, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_aw4cw"]
-gradient = SubResource("Gradient_nfeox")
-
-[sub_resource type="Curve" id="Curve_3el85"]
-_data = [Vector2(0.0103359, 0.9935), 0.0, 0.0, 0, 0, Vector2(0.97416, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_hbmxj"]
-width = 2048
-curve = SubResource("Curve_3el85")
+[gd_scene load_steps=2 format=3 uid="uid://dv22lgmgteo0a"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xfoey"]
 particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 5.0
-angle_min = -389.4
-angle_max = 459.2
-angle_curve = SubResource("CurveTexture_17npe")
+emission_shape_scale = Vector3(5, 5, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
 spread = 180.0
 initial_velocity_min = 25.0
 initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
-scale_max = 2.0
-scale_curve = SubResource("CurveTexture_hbmxj")
-color_ramp = SubResource("GradientTexture1D_aw4cw")
+scale_min = 5.0
+scale_max = 5.0
 
 [node name="Node2D" type="GPUParticles2D"]
 scale = Vector2(3, 3)
 emitting = false
 amount = 16
+lifetime = 0.5
 one_shot = true
+speed_scale = 2.0
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_xfoey")

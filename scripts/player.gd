@@ -6,6 +6,7 @@ signal player_hit
 const WALK = preload("res://sfx/walk.wav")
 const HURT = preload("res://sfx/Hurt.wav")
 const SWORD_SLASH = preload("res://sfx/Sword_Slash.wav")
+const EXPLOSION = preload("res://scenes/explosion.tscn")
 
 var has_key: bool = false
 
@@ -56,11 +57,21 @@ func take_damage(_damage_taken: int) -> void:
 	PlayerData.change_health(-1)
 	$AnimationPlayer.play("hit")
 	if PlayerData.health <= 0:
-		Sfx.death.play()
-		get_tree().reload_current_scene()
 		PlayerData.max_health = PlayerData.default_max_health
 		PlayerData.health = PlayerData.max_health
-	if PlayerData.health > 0:
+		PlayerData.coins = 0
+		PlayerData.level = 1
+		PlayerData.atk = 1
+		PlayerData.def = 1
+		Sfx.death.play()
+		visible = false
+		process_mode = Node.PROCESS_MODE_DISABLED
+		var _particle = EXPLOSION.instantiate()
+		_particle.global_position = global_position
+		_particle.emitting = true
+		get_tree().current_scene.add_child(_particle)
+		#get_tree().reload_current_scene()
+	elif PlayerData.health > 0:
 		$SFX.stream = HURT
 		$SFX.play()
 	player_hit.emit()
